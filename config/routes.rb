@@ -1,4 +1,19 @@
-Rails.application.routes.draw do
-  root 'static_pages#home'
-  devise_for :users
+Rails.application.routes.draw do	
+
+	devise_for :users, controllers: {
+		sessions: 'users/sessions',
+		registrations: 'users/registrations',
+		passwords: 'users/passwords'
+		}
+
+	devise_scope :user do
+		authenticated :user do
+			root 'static_pages#home', as: :authenticated_root
+		end
+
+		unauthenticated do
+			root 'devise/sessions#new', as: :unauthenticated_root
+		end
+	end
+
 end

@@ -10,11 +10,10 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+   	<% if user_signed_in? %>
+    	<%= render 'layouts/header' %>
+    <% end %>
     <%= render 'layouts/error_messages' %>
-
-    <div class="container">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </body>
 </html>
