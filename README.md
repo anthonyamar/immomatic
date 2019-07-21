@@ -1,3 +1,6 @@
+# immomatic
+🏢 create automated flat search and rentability calculating for investments.
+
 ## Main libraries and tools used
 
 ##### Authentification
@@ -73,3 +76,4 @@ Add the project to CircleCI.
 
 ##### 4. Deploy
 Manually deploy from staging to production :rocket:
+
