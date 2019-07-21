@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_224834) do
+ActiveRecord::Schema.define(version: 2019_07_21_145507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "real_estates", force: :cascade do |t|
+    t.string "ad_link"
+    t.float "buying_price", null: false
+    t.float "monthly_rent_estimation", null: false
+    t.float "annual_charges", null: false
+    t.float "works_budget", default: 0.0
+    t.float "furniture_budget", default: 0.0
+    t.float "others_budget", default: 0.0
+    t.float "net_yield"
+    t.float "annual_cashflow"
+    t.string "state", null: false
+    t.string "address_street"
+    t.string "postal_code"
+    t.string "city"
+    t.string "country"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_real_estates_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +53,5 @@ ActiveRecord::Schema.define(version: 2018_10_19_224834) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "real_estates", "users"
 end
