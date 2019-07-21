@@ -1,12 +1,25 @@
-<div class="center jumbotron home--jumbotron">
-  <h1>Home</h1>
+<div class="center jumbotron home--jumbotron no-radius">
+  <h1>Welcome to Immomatic </h1>
+  <p>What do you want to achieve today? ⛵️</p>
+</div>
 
-  <h3>Welcome to the Template App</h3>
-  <p>Looks like everything is running smoothly ⛵️</p>
-
-  <% if user_signed_in? %>
-    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "btn btn-danger btn-lg" %>
-  <% else %>
-    <%= link_to 'Log in', new_user_session_path, class: "btn btn-success btn-lg" %>
-  <% end %>
+<div class="container card-estates">
+  <div class="row">
+    <div class="col-sm-6">
+      <%= link_to real_estates_path do %>
+        <div class="jumbotron center home--jumbotron shadow-sm">
+          <h3 class="text-primary no-underline"><i class="fas fa-list"></i> See my real estates</h3>
+          <%= image_tag "illustrations/analytics.svg", class: "w-100 img-fluid mt-5" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-sm-6">
+      <%= link_to new_real_estate_path do %>
+        <div class="jumbotron center home--jumbotron shadow-sm">
+          <h3 class="text-primary no-underline"><i class="fas fa-plus"></i> Add new real estates</h3>
+          <%= image_tag "illustrations/buy_house.svg", class: "w-100 img-fluid mt-5" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
