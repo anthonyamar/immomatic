@@ -32,5 +32,7 @@ module Template
 
     # Use Sidekiq
     config.active_job.queue_adapter = :sidekiq
+    
+    config.i18n.default_locale = :fr
   end
 end

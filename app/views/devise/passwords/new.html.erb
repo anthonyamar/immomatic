@@ -1,16 +1,25 @@
-<h2>Forgot your password?</h2>
+<% @title = "Mot de passe oublié" %>
+<div class="container sign-in">
+  <div class="row flex-column devise--form">
+     <div class="sign-in-head">
+       <%= image_tag "logos/house.svg" %>
+       <h1>Immomatic</h1>
+       <p class="text-secondary">Recevez les instructions pour <br>changer votre mot de passe</p>
+     </div>
+    
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg shadow-sm" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="form-group">
+        <%= f.submit "Recevoir les instructions", class: "btn btn-primary btn-block btn-lg shadow-sm" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
