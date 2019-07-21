@@ -29,6 +29,7 @@ class RealEstate < ApplicationRecord
 	scope :buyed, -> { where(state: "buyed") }
 	scope :ordered_by_net_yield, -> (limit) { order(net_yield: :desc).limit(limit) }
 	scope :ordered_by_annual_cashflow, -> (limit) { order(annual_cashflow: :desc).limit(limit) }
+  scope :visible_by, -> (user) { where("user_id = ?", user.id) }
 	
 	def annual_rent_estimation
 		monthly_rent_estimation * 12
@@ -41,5 +42,13 @@ class RealEstate < ApplicationRecord
 	def monthly_cashflow
 		annual_cashflow / 12
 	end
+  
+  def abandoned?
+    state == "abandoned" || state == "offline" || state == "buyed"
+  end
+  
+  def abandonable_or_editable?
+    !abandoned?
+  end
 	
 end

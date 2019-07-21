@@ -31,11 +31,3 @@
 
 en:
   hello: "Hello world"
-  faker:
-    address:
-      city:
-      - bonjour
-      - aurevoir
-      street_address:
-      - Bonjour
-      - Aurevoir

@@ -38,7 +38,7 @@ gem 'draper'
 gem 'sidekiq', '~> 5.2.2'
 
 # EXTERNAL SERVICES
-gem 'bootsnap', '>= 1.1.0', require: false
+#gem 'bootsnap', '>= 1.1.0', require: false
 
 # SEEDS
 gem 'faker', '~> 1.9', '>= 1.9.1'

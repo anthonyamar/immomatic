@@ -1,7 +1,19 @@
+body {
+  background-color: #f8f9fa;
+}
+
 .no-radius {
   border-radius: 0 !important;
 }
 
 .no-underline {
+  text-decoration: none !important;
+}
+
+.jumbotron {
+  background-color: white !important;
+}
+
+a:hover {
   text-decoration: none !important;
 }

@@ -1,13 +1,14 @@
-<div class="center jumbotron home--jumbotron no-radius">
-  <h1>Welcome to Immomatic </h1>
-  <p>What do you want to achieve today? ⛵️</p>
+<% @title = "Welcome Home" %>
+<div class="home-header center jumbotron home--jumbotron no-radius">
+  <h1 class="text-primary">Welcome to Immomatic </h1>
+  <p class="text-secondary">What do you want to achieve today? ⛵️</p>
 </div>
 
 <div class="container card-estates">
   <div class="row">
     <div class="col-sm-6">
       <%= link_to real_estates_path do %>
-        <div class="jumbotron center home--jumbotron shadow-sm">
+        <div class="jumbotron center home--jumbotron shadow">
           <h3 class="text-primary no-underline"><i class="fas fa-list"></i> See my real estates</h3>
           <%= image_tag "illustrations/analytics.svg", class: "w-100 img-fluid mt-5" %>
         </div>
@@ -15,7 +16,7 @@
     </div>
     <div class="col-sm-6">
       <%= link_to new_real_estate_path do %>
-        <div class="jumbotron center home--jumbotron shadow-sm">
+        <div class="jumbotron center home--jumbotron shadow">
           <h3 class="text-primary no-underline"><i class="fas fa-plus"></i> Add new real estates</h3>
           <%= image_tag "illustrations/buy_house.svg", class: "w-100 img-fluid mt-5" %>
         </div>

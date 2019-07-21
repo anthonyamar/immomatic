@@ -1,0 +1,58 @@
+<% @title = "Your real estates" %>
+<div class="container">
+  <div class="jumbotron center mt-5 shadow">
+    <div class="text-center">
+      <h1 class="text-primary">Vos biens immobiliers</h1>
+      <p class="text-secondary">
+        Recherchez à travers votre collection de biens immobiliers potentiels <br>
+        et constatez lesquels apparaissent être les plus profitables
+      </p>
+    </div>
+
+    <div class="table-responsive">
+      <table id="table_real_estates" class="table table-theme table-bordered">
+        <thead>
+          <tr>
+            <th><b>Actions</b></th>
+            <th><b>Annonce</b></th>
+            <th><b>Prix d'achat</b></th>
+            <th><b>Loyer mensuel estimé</b></th>
+            <th><b>Charges annuelles</b></th>
+            <th><b>Rendement net</b></th>
+            <th><b>Cashflow annuel</b></th>
+            <th><b>État</b></th>
+            <th><b>Ville</b></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @real_estates.each do |real_estate| %>
+            <tr>
+              <td>
+                <%= link_to real_estate_path(real_estate), title: "Détails" do %>
+                  <i class="fas fa-eye fa-lg text-success"></i>
+                <% end %>
+                <% if real_estate.abandonable_or_editable? %>
+                  <%= link_to edit_real_estate_path(real_estate), title: "Éditer" do %>
+                    <i class="fas fa-edit fa-lg text-info"></i>
+                  <% end %>
+                  <%= link_to real_estate_path(real_estate), title: "Supprimer", method: :destroy, data: { confirm: "Are you sure to abandonned this real estate?" } do %>
+                    <i class="fas fa-trash-alt fa-lg text-danger"></i>
+                  <% end %>
+                <% end %>
+              </td>
+              <td><%= link_to real_estate.ad_link.truncate(20), real_estate.ad_link %></td>
+              <td><%= real_estate.decorate.format_buying_price %></td>
+              <td><%= real_estate.decorate.format_monthly_rent_estimation %></td>
+              <td><%= real_estate.decorate.format_annual_charges %></td>
+              <td><%= real_estate.decorate.format_net_yield %></td>
+              <td><%= real_estate.decorate.format_annual_cashflow %></td>
+              <td><%= real_estate.decorate.format_states %></td>
+              <td><%= real_estate.city %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
