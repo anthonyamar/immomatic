@@ -9,7 +9,7 @@ User.delete_all
 puts "-> Create 20 users"
 20.times do |n|
 	email = "user_#{n}@immomatic.co"
-	password = "usermatic-#{n}"
+	password = "password"
 	User.create!(
 		email: email,
 		password: password
@@ -29,6 +29,7 @@ puts "-> 50 real_estates for each users"
 			buying_price: rand(50000..200000),
 			monthly_rent_estimation: rand(400..1500),
 			annual_charges: rand(500..2000),
+			square_meters: rand(20..40),
 			state: RealEstate::STATES.sample,
 			address_street: Faker::Address.street_address,
 			postal_code: Faker::Address.zip_code,

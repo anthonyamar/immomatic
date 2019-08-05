@@ -6,6 +6,14 @@ class RealEstateDecorator < Draper::Decorator
     to_currency(real_estate.buying_price)
   end
   
+  def format_square_meters
+    real_estate.square_meters.to_s + "m2"
+  end
+  
+  def format_price_per_square_meters
+    to_currency((real_estate.buying_price / real_estate.square_meters)) + "/m2"
+  end
+  
   def format_monthly_rent_estimation
     to_currency(real_estate.monthly_rent_estimation)
   end

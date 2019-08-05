@@ -7,11 +7,11 @@ require_relative 'calc_file'
 
 class Profitability
 	
-	attr_accessor :buying_price, :monthly_rent_price, :annual_charges, :monthly_charges
+	attr_accessor :buying_price, :monthly_rent_estimation, :annual_charges, :monthly_charges
 
 	def initialize
 		@buying_price = 0
-		@monthly_rent_price = 0
+		@monthly_rent_estimation = 0
 		@annual_charges = 0
 		@monthly_charges = 0
 	end
@@ -43,12 +43,12 @@ class Profitability
 	
 	def calc_row(row)
 		buying_price = row[1].to_f
-		monthly_rent_price = row[2].to_f
+		monthly_rent_estimation = row[2].to_f
 		annual_charges = row[3].to_f
 		monthly_charges = row[4].to_f
-		puts "#{buying_price}, #{monthly_rent_price}, #{annual_charges}, #{monthly_charges}"
+		puts "#{buying_price}, #{monthly_rent_estimation}, #{annual_charges}, #{monthly_charges}"
 		
-		calc = CalcFile.new(buying_price, monthly_rent_price, annual_charges, monthly_charges)
+		calc = CalcFile.new(buying_price, monthly_rent_estimation, annual_charges, monthly_charges)
 #		binding.pry
 		hash = {name: row[0], annual_cashflow: calc.annual_cashflow,  }
 	end

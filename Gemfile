@@ -21,6 +21,9 @@ gem 'groupdate'
 gem 'devise'
 gem 'devise-i18n'
 
+# CALCULATIONS 
+gem 'finance_math'
+
 # ENV
 gem 'figaro', '~> 1.1.1'
 

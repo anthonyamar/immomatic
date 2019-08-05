@@ -16,6 +16,8 @@
             <th><b>Actions</b></th>
             <th><b>Annonce</b></th>
             <th><b>Prix d'achat</b></th>
+            <th><b>Nombre de m2</b></th>
+            <th><b>Prix par m2</b></th>
             <th><b>Loyer mensuel estimé</b></th>
             <th><b>Charges annuelles</b></th>
             <th><b>Rendement net</b></th>
@@ -43,6 +45,8 @@
               </td>
               <td><%= link_to real_estate.ad_link.truncate(20), real_estate.ad_link %></td>
               <td><%= real_estate.decorate.format_buying_price %></td>
+              <td><%= real_estate.decorate.format_square_meters %></td>
+              <td><%= real_estate.decorate.format_price_per_square_meters %></td>
               <td><%= real_estate.decorate.format_monthly_rent_estimation %></td>
               <td><%= real_estate.decorate.format_annual_charges %></td>
               <td><%= real_estate.decorate.format_net_yield %></td>

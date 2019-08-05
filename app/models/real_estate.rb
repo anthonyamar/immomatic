@@ -15,6 +15,7 @@ class RealEstate < ApplicationRecord
 	validates :works_budget, numericality: { greater_than_or_equal_to: 0 }
 	validates :furniture_budget, numericality: { greater_than_or_equal_to: 0 }
 	validates :others_budget, numericality: { greater_than_or_equal_to: 0 }
+	validates :square_meters, numericality: { greater_than_or_equal_to: 0 }
 	validates :state, presence: true, inclusion: { in: STATES }
 	
 	# ============ Scopes ===================
