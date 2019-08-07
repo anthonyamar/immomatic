@@ -33,7 +33,7 @@ class CalcFile
 	end
 
 	def net_yield
-		(total_rent_revenues - total_annual_fees) / total_acquisition
+		((total_rent_revenues - total_annual_fees) / total_acquisition) * 100
     # return a % usualy less than 5..10%
 	end
 
@@ -92,7 +92,6 @@ class CalcFile
 	end
 
 	def total_acquisition # C8
-    
 		puts "total_acquisition = #{buying + notary + works + furniture + others}"
 		buying + notary + works + furniture + others
 	end

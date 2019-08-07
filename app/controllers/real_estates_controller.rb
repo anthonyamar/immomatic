@@ -8,7 +8,7 @@ class RealEstatesController < ApplicationController
   end
   
   def new
-    
+    @real_estate = RealEstate.new
   end
   
   def create

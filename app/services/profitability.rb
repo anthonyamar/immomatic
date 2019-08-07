@@ -49,7 +49,6 @@ class Profitability
 		puts "#{buying_price}, #{monthly_rent_estimation}, #{annual_charges}, #{monthly_charges}"
 		
 		calc = CalcFile.new(buying_price, monthly_rent_estimation, annual_charges, monthly_charges)
-#		binding.pry
 		hash = {name: row[0], annual_cashflow: calc.annual_cashflow,  }
 	end
 

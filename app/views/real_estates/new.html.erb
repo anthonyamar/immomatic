@@ -1,0 +1,60 @@
+<% @title = "Répertorier un nouveau bien immobilier" %>
+<div class="container">
+  <div class="jumbotron center mt-5 shadow">
+    <div class="text-center">
+      <h1 class="text-primary">Répertorier un nouveau bien immobilier</h1>
+      <p class="text-secondary">
+        Recherchez à travers votre collection de biens immobiliers potentiels <br>
+        et constatez lesquels apparaissent être les plus profitables
+      </p>
+    </div>
+    
+    <%= simple_form_for @real_estate, method: :post, url: real_estates_path, defaults: { label: false } do |f| %>
+      <div class="form-inputs pro-form-padding">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-3 hr-form-title">
+              <h5>Informations</h5><hr>
+              <i class="text-muted">Informations indispensables pour déterminer la rentabilité du bien.</i>
+            </div>
+            <div class="col-sm-9 pro-form-input">
+              <label>Lien de l'annonce</label>
+              <%= f.input :ad_link, class: "form-control" %>
+              <label>Prix d'achat</label>
+              <%= f.input :buying_price, class: "form-control" %>
+              <label>Surface</label>
+              <%= f.input :square_meters, class: "form-control" %>
+              <label>
+                <i class="far fa-question-circle text-primary" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Le prix mensuel du loyer auquel vous pensez vouloir mettre ce bien."></i> Loyer mensuel estimé
+              </label>
+              <%= f.input :monthly_rent_estimation, class: "form-control" %>
+              <label>État</label>
+              <%= f.input :state, as: :select, include_blank: false, class: "form-control" %><br><br>
+            </div>
+            <div class="col-sm-3 hr-form-title">
+              <h5>Charges variables</h5><hr>
+              <i class="text-muted">Quelles sont les charges prévues pour ce bien.</i>
+            </div>
+            <div class="col-sm-9 pro-form-input">
+              <label>Charges annuelles</label>
+              <%= f.input :annual_charges, class: "form-control" %>
+              <label>Budget travaux</label>
+              <%= f.input :works_budget, class: "form-control" %>
+              <label>Budget fourniture</label>
+              <%= f.input :furniture_budget, class: "form-control" %>
+              <label>
+                <i class="far fa-question-circle text-primary" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Dépenses de tout type : aménagements, nettoyage, papiers..."></i>
+                Budget dépenses autres
+              </label>
+              <%= f.input :others_budget, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, 'Programmer cet enregistrement', class: 'btn btn-success btn-lg btn-block' %>
+      </div>
+    
+    <% end %>
+  </div>
+</div>
