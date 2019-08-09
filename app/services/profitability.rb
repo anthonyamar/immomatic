@@ -1,10 +1,3 @@
-require 'csv'
-require 'simple_xlsx_reader'
-require 'pp'
-require 'pry'
-require 'rb-readline'
-require_relative 'calc_file'
-
 class Profitability
 	
 	attr_accessor :buying_price, :monthly_rent_estimation, :annual_charges, :monthly_charges
@@ -53,5 +46,3 @@ class Profitability
 	end
 
 end
-
-Profitability.new.perform
