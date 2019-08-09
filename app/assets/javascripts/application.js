@@ -4,3 +4,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
