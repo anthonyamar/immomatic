@@ -7,6 +7,10 @@ class RealEstate < ApplicationRecord
 	# ============= Validations ===============
 	
 	STATES = %w(created abandoned offline interested waiting_response visited financement_progress buyed)
+  STATES_COLLECTION = [["Créé", "created"], ["Abandonné", "abandoned"], 
+                      ["Hors ligne", "offline"], ["Intéressé", "interested"],
+                      ["En attente de réponse", "waiting_response"], ["Visité", "visited"], 
+                      ["En cours de financement", "financement_progress"], ["Acheté", "buyed"]]
 	
 	validates :ad_link, presence: true
 	validates :buying_price, presence: true, numericality: { greater_than_or_equal_to: 0 }

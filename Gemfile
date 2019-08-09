@@ -11,6 +11,7 @@ gem 'rest-client'
 
 # FORMS
 gem 'simple_form'
+gem 'country_select', '~> 4.0'
 gem 'virtus'
 
 # ACTIVE RECORDS 
