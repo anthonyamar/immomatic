@@ -4,7 +4,8 @@ class CalcFile
   :works_budget, :furniture_budget, :others_budget
 
   MONTHS = 12 # number of month in on year. 
-  CREDIT_YEARS = 25 # credit duration. 
+  CREDIT_YEARS = 25 # credit duration.
+  CREDIT_MONTHS_DURATION = CREDIT_YEARS * MONTHS
   CREDIT_RATE = 1.6 # average rate in the market
   TENANT_CHARGES_RATE = 1.66 # 2/3 for the tenant, 1/3 for the owner
   ADMINISTRATIVE_MANAGMENT_RATE = 0.06
@@ -117,7 +118,7 @@ class CalcFile
   def total_rent_revenues # C13
     total = (monthly_rate * MONTHS) - (monthly_rate * holiday_rent)
     puts "total_rent_revenues = #{total}"
-    return total
+    return total # return annual rent revenues
   end
 
   # ANNUAL FEES
@@ -141,18 +142,20 @@ class CalcFile
     # NEW EXCEL FORMULA : =(-PMT((1+1,6%)^(1/12)-1;25*12;C8))*12
 
     #    nominal_rate = (1 + ((CREDIT_RATE * 1) / 100)) ** (1 / 12) - 1
-    duration = CREDIT_YEARS * MONTHS
     #    
     #    loan = FinanceMath::Loan.new(nominal_rate: nominal_rate, duration: duration, amount: total_acquisition)
     #    puts "credit : #{loan.pmt * MONTHS}"
     #    return loan.pmt * MONTHS
 
-    credit = menscredit(total_acquisition, CREDIT_RATE, duration)
-    puts "credit : #{credit} * 12 = #{credit * 12}"
-    credit * 12   # this return the total credit to pay in the lifetime_credit 
+    puts "credit : #{menscredit} * 12 = #{menscredit * 12}"
+    menscredit * 12   # this return the total credit to pay in the lifetime_credit 
   end
 
-  def menscredit(c, ia, n)
+  def menscredit
+    c = total_acquisition
+    ia = CREDIT_RATE
+    n = CREDIT_MONTHS_DURATION
+    
     puts "menscredit(#{c}, #{ia}, #{n})"
     # si le capital est nul, il n'y a rien à rembourser
     if c == 0

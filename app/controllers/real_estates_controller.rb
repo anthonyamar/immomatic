@@ -4,7 +4,8 @@ class RealEstatesController < ApplicationController
   end
   
   def show
-    @real_estate = RealEstate.find(params[:id])
+    @real_estate = RealEstate.find(params[:id]).decorate
+    @profitability = CalcFile.new(@real_estate)
   end
   
   def new

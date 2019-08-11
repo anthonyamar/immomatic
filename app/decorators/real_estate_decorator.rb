@@ -23,8 +23,8 @@ class RealEstateDecorator < Draper::Decorator
   end
   
   def format_net_yield
-    net_yield = CalcFile.new(real_estate).net_yield
-    "#{color_number(net_yield.round(2), false)}%".html_safe
+    net_yield = calc_file.net_yield
+    "#{color_number(net_yield.round(2), false)}".html_safe
   end
   
   def format_works_budget
@@ -40,8 +40,22 @@ class RealEstateDecorator < Draper::Decorator
   end
   
   def format_annual_cashflow
-    annual_cashflow = CalcFile.new(real_estate).annual_cashflow
+    annual_cashflow = calc_file.annual_cashflow_after_taxes
     "#{color_number(annual_cashflow)}".html_safe
+  end
+  
+  def format_total_acquisition
+    total_acquisition = calc_file.total_acquisition
+    "#{color_number(total_acquisition)}".html_safe
+  end
+  
+  def format_total_rent_revenues
+    annual_rent_revenues = calc_file.total_rent_revenues
+    "#{color_number(annual_rent_revenues)}".html_safe
+  end
+  
+  def calc_file
+    CalcFile.new(real_estate)
   end
   
   def format_states
@@ -67,7 +81,8 @@ class RealEstateDecorator < Draper::Decorator
   
   def color_number(number, currency = true)
     number_currency = to_currency(number)
-    total = currency ? number_currency : number
+    percentage = "#{number.round(2)}%"
+    total = currency ? number_currency : percentage
     if number > 0
       "<span class='text-success'>#{total}</span>".html_safe
     elsif number == 0

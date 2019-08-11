@@ -1,0 +1,45 @@
+<div class="row show-tabs">
+  <div class="col-sm-6">
+    <h5 class="mb-4">Indicateurs importants</h5>
+    <p><b>Loyer mensuel estimé : </b><%= @real_estate.monthly_rent_estimation %></p>
+    <p><b>Charges annuelles : </b><%= @real_estate.annual_charges %></p>
+    <p><b>Rendement brut : </b><%= @profitability.gross_yield %></p>
+    <p><b>Rendement net : </b><%= @profitability.net_yield %></p>
+    <p><b>Cashflow mensuel : </b><%= @profitability.monthly_cashflow %></p>
+    <p><b>Cashflow annuel : </b><%= @profitability.annual_cashflow %></p>
+    <p><b>Impot société SCI : </b><%= @profitability.company_taxes %></p>
+    <p><b>Cashflow mensuel après impôts : </b><%= @profitability.monthly_cashflow_after_taxes %></p>
+    <p><b>Cashflow annuel après impôts : </b><%= @profitability.annual_cashflow_after_taxes %></p>
+  </div>
+  <div class="col-sm-6">
+    <h5 class="mb-4">Frais annuels</h5>
+    <p><b>Crédit annuel : </b><%= @profitability.credit %></p>
+    <p><b>Mensualité de crédit : </b><%= @profitability.menscredit %></p>
+    <p><b>Charges de copropriété : </b><%= @profitability.coownership_charges %></p>
+    <p><b>Assurance habitation : </b><%= @profitability.house_insurance %></p>
+    <p><b>Assurance loyers impayés : </b><%= @profitability.rent_insurance %></p>
+    <p><b>Taxe foncière : </b><%= @profitability.property_tax %></p>
+    <p><b>Gestion administrative : </b><%= @profitability.administrative_management %></p>
+    <p><b>Assurance crédit : </b><%= @profitability.credit_insurance %></p>
+    <p><b>Divers : </b><%= @profitability.various %></p>
+    <p><b>Total des frais annuels : </b><%= @profitability.total_annual_fees %></p>
+  </div>
+  <div class="col-sm-6">
+    <h5 class="mb-4">Prix d'acquisition du bien</h5>
+    <p><b>Prix d'achat : </b><%= @real_estate.buying_price %></p>
+    <p><b>Notaire : </b><%= @profitability.notary %></p>
+    <p><b>Travaux : </b><%= @real_estate.works_budget %></p>
+    <p><b>Ameublement : </b><%= @real_estate.furniture_budget %></p>
+    <p><b>Autres : </b><%= @profitability.others %></p>
+    <p><b>Prix total d'acquisition : </b><%= @profitability.total_acquisition %></p>
+  </div>
+  <div class="col-sm-6">
+    <h5 class="mb-4">Revenus locatifs</h5>
+    <p><b>Loyer mensuel CC : </b><%= @profitability.monthly_rate %></p>
+    <p><b>Vacances locatives : </b><%= @profitability.holiday_rent %></p>
+    <p><b>Total revenus locatifs annuels : </b><%= @profitability.total_rent_revenues %></p>
+  </div>
+</div>
+
+
+
