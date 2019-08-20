@@ -1,8 +1,16 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
-  <%= link_to authenticated_root_path, class: "navbar-brand" do %>
-    <%= image_tag "logos/house.svg", class: "logo" %>
-    Immomatic
-  <% end %>
+ <div class="d-none d-lg-block">
+    <%= link_to authenticated_root_path, class: "navbar-brand" do %>
+      <%= image_tag "logos/house.svg", class: "logo" %>
+      Immomatic
+    <% end %>
+  </div>
+  <div class="d-lg-none w-75">
+    <%= link_to authenticated_root_path, class: "navbar-brand" do %>
+      <%= image_tag "logos/house.svg", class: "logo-responsive" %>
+      Immomatic
+    <% end %>
+  </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

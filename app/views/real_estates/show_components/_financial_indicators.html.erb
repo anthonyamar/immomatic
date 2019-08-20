@@ -1,43 +1,43 @@
 <div class="row show-tabs">
   <div class="col-sm-6">
     <h5 class="mb-4">Indicateurs importants</h5>
-    <p><b>Loyer mensuel estimé : </b><%= @real_estate.monthly_rent_estimation %></p>
-    <p><b>Charges annuelles : </b><%= @real_estate.annual_charges %></p>
-    <p><b>Rendement brut : </b><%= @profitability.gross_yield %></p>
-    <p><b>Rendement net : </b><%= @profitability.net_yield %></p>
-    <p><b>Cashflow mensuel : </b><%= @profitability.monthly_cashflow %></p>
-    <p><b>Cashflow annuel : </b><%= @profitability.annual_cashflow %></p>
-    <p><b>Impot société SCI : </b><%= @profitability.company_taxes %></p>
-    <p><b>Cashflow mensuel après impôts : </b><%= @profitability.monthly_cashflow_after_taxes %></p>
-    <p><b>Cashflow annuel après impôts : </b><%= @profitability.annual_cashflow_after_taxes %></p>
+    <p><b>Loyer mensuel estimé : </b><%= to_currency(@real_estate.monthly_rent_estimation.round(2)) %></p>
+    <p><b>Charges annuelles : </b><%= to_currency(@real_estate.annual_charges.round(2)) %></p>
+    <p><b>Rendement brut : </b><%= to_percentage(@profitability.gross_yield.round(2)) %></p>
+    <p><b>Rendement net : </b><%= to_percentage(@profitability.net_yield.round(2)) %></p>
+    <p><b>Cashflow mensuel : </b><%= to_currency(@profitability.monthly_cashflow.round(2)) %></p>
+    <p><b>Cashflow annuel : </b><%= to_currency(@profitability.annual_cashflow.round(2)) %></p>
+    <p><b>Impot société SCI : </b><%= to_currency(@profitability.company_taxes.round(2)) %></p>
+    <p><b>Cashflow mensuel après impôts : </b><%= to_currency(@profitability.monthly_cashflow_after_taxes.round(2)) %></p>
+    <p><b>Cashflow annuel après impôts : </b><%= to_currency(@profitability.annual_cashflow_after_taxes .round(2)) %></p>
   </div>
   <div class="col-sm-6">
     <h5 class="mb-4">Frais annuels</h5>
-    <p><b>Crédit annuel : </b><%= @profitability.credit %></p>
-    <p><b>Mensualité de crédit : </b><%= @profitability.menscredit %></p>
-    <p><b>Charges de copropriété : </b><%= @profitability.coownership_charges %></p>
-    <p><b>Assurance habitation : </b><%= @profitability.house_insurance %></p>
-    <p><b>Assurance loyers impayés : </b><%= @profitability.rent_insurance %></p>
-    <p><b>Taxe foncière : </b><%= @profitability.property_tax %></p>
-    <p><b>Gestion administrative : </b><%= @profitability.administrative_management %></p>
-    <p><b>Assurance crédit : </b><%= @profitability.credit_insurance %></p>
-    <p><b>Divers : </b><%= @profitability.various %></p>
-    <p><b>Total des frais annuels : </b><%= @profitability.total_annual_fees %></p>
+    <p><b>Crédit annuel : </b><%= to_currency(@profitability.credit.round(2)) %></p>
+    <p><b>Mensualité de crédit : </b><%= to_currency(@profitability.menscredit.round(2)) %></p>
+    <p><b>Charges de copropriété : </b><%= to_currency(@profitability.coownership_charges.round(2)) %></p>
+    <p><b>Assurance habitation : </b><%= to_currency(@profitability.house_insurance.round(2)) %></p>
+    <p><b>Assurance loyers impayés : </b><%= to_currency(@profitability.rent_insurance.round(2)) %></p>
+    <p><b>Taxe foncière : </b><%= to_currency(@profitability.property_tax.round(2)) %></p>
+    <p><b>Gestion administrative : </b><%= to_currency(@profitability.administrative_management.round(2)) %></p>
+    <p><b>Assurance crédit : </b><%= to_currency(@profitability.credit_insurance.round(2)) %></p>
+    <p><b>Divers : </b><%= to_currency(@profitability.various.round(2)) %></p>
+    <p><b>Total des frais annuels : </b><%=to_currency(@profitability.total_annual_fees.round(2)) %></p>
   </div>
   <div class="col-sm-6">
     <h5 class="mb-4">Prix d'acquisition du bien</h5>
-    <p><b>Prix d'achat : </b><%= @real_estate.buying_price %></p>
-    <p><b>Notaire : </b><%= @profitability.notary %></p>
-    <p><b>Travaux : </b><%= @real_estate.works_budget %></p>
-    <p><b>Ameublement : </b><%= @real_estate.furniture_budget %></p>
-    <p><b>Autres : </b><%= @profitability.others %></p>
-    <p><b>Prix total d'acquisition : </b><%= @profitability.total_acquisition %></p>
+    <p><b>Prix d'achat : </b><%= to_currency(@real_estate.buying_price.round(2)) %></p>
+    <p><b>Notaire : </b><%= to_currency(@profitability.notary.round(2)) %></p>
+    <p><b>Travaux : </b><%= to_currency(@real_estate.works_budget.round(2)) %></p>
+    <p><b>Ameublement : </b><%= to_currency(@real_estate.furniture_budget.round(2)) %></p>
+    <p><b>Autres : </b><%= to_currency(@profitability.others.round(2)) %></p>
+    <p><b>Prix total d'acquisition : </b><%= to_currency(@profitability.total_acquisition.round(2)) %></p>
   </div>
   <div class="col-sm-6">
     <h5 class="mb-4">Revenus locatifs</h5>
-    <p><b>Loyer mensuel CC : </b><%= @profitability.monthly_rate %></p>
-    <p><b>Vacances locatives : </b><%= @profitability.holiday_rent %></p>
-    <p><b>Total revenus locatifs annuels : </b><%= @profitability.total_rent_revenues %></p>
+    <p><b>Loyer mensuel CC : </b><%= to_currency(@profitability.monthly_rate.round(2)) %></p>
+    <p><b>Vacances locatives : </b><%= to_currency(@profitability.holiday_rent.round(2)) %></p>
+    <p><b>Total revenus locatifs annuels : </b><%= to_currency(@profitability.total_rent_revenues.round(2)) %></p>
   </div>
 </div>
 
