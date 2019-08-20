@@ -1,13 +1,12 @@
 <% @title = "Connectez-vous" %>
 <div class="container sign-in">
   <div class="row flex-column devise--form">
-     <div class="sign-in-head">
-       <%= image_tag "logos/house.svg" %>
-       <h1>Immomatic</h1>
-     </div>
-    
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      
+    <div class="col-sm-12">
+      <div class="sign-in-head">
+        <%= image_tag "logos/house.svg" %>
+        <h1>Immomatic</h1>
+      </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg shadow-sm" %>
@@ -28,9 +27,9 @@
         <div class="form-group">
           <%= f.submit "Connexion", class: "btn btn-primary btn-block btn-lg shadow-sm" %>
         </div>
-      
-    <% end %>
+      <% end %>
 
-    <%= render "devise/shared/links" %>
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 </div>
