@@ -7,7 +7,12 @@
           <i class="text-muted">Informations indispensables pour déterminer la rentabilité du bien.</i>
         </div>
         <div class="col-sm-9 pro-form-input">
-          <label>Lien de l'annonce</label>
+          <label>
+            Lien de l'annonce
+            <%= link_to @real_estate.ad_link do %>
+              <i class="fas fa-external-link-alt text-primary"></i>
+            <% end %>
+          </label>
           <%= f.input :ad_link, placeholder: "https://leboncoin.fr/...", class: "form-control" %>
           <label>Prix d'achat</label>
           <%= f.input :buying_price, input_html: { min: '0', step: '10000'}, class: "form-control" %>
