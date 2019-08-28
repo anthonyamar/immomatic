@@ -93,7 +93,7 @@ class RealEstateDecorator < Draper::Decorator
   end
   
   def to_currency(number)
-    number_to_currency(number, unit: "€", separator: ",", delimiter: "", format: "%n %u")
+    number_to_currency(number, unit: "€", separator: ",", delimiter: " ", format: "%n %u")
   end
 
 end

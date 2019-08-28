@@ -1,1 +1,69 @@
-<div class="row"></div>
+<%= simple_form_for @real_estate, method: :put, url: real_estate_path(@real_estate), defaults: { label: false } do |f| %>
+  <div class="pro-form-padding">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-3 hr-form-title">
+          <h5>Informations</h5><hr>
+          <i class="text-muted">Informations indispensables pour déterminer la rentabilité du bien.</i>
+        </div>
+        <div class="col-sm-9 pro-form-input">
+          <label>Lien de l'annonce</label>
+          <%= f.input :ad_link, placeholder: "https://leboncoin.fr/...", class: "form-control" %>
+          <label>Prix d'achat</label>
+          <%= f.input :buying_price, input_html: { min: '0', step: '10000'}, class: "form-control" %>
+          <label>Surface</label>
+          <%= f.input :square_meters, input_html: { min: '0', step: '1'}, class: "form-control" %>
+          <label>
+            <i class="far fa-question-circle text-primary" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Le prix mensuel du loyer auquel vous pensez vouloir mettre ce bien."></i> Loyer mensuel estimé
+          </label>
+          <%= f.input :monthly_rent_estimation, input_html: { min: '0', step: '50'}, class: "form-control" %>
+          <label>État</label>
+          <%= f.input :state, as: :select, collection: RealEstate::STATES_COLLECTION, include_blank: false, class: "form-control" %><br><br>
+        </div>
+        <div class="col-sm-3 hr-form-title">
+          <h5>Charges variables</h5><hr>
+          <i class="text-muted">Quelles sont les charges prévues pour ce bien.</i>
+        </div>
+        <div class="col-sm-9 pro-form-input">
+          <label>Charges annuelles</label>
+          <%= f.input :annual_charges, input_html: { min: '0', step: '50'}, class: "form-control" %>
+          <label>Budget travaux</label>
+          <%= f.input :works_budget, input_html: { min: '0', step: '500'}, class: "form-control" %>
+          <label>Budget fourniture</label>
+          <%= f.input :furniture_budget, input_html: { min: '0', step: '100'}, class: "form-control" %>
+          <label>
+            <i class="far fa-question-circle text-primary" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Dépenses de tout type : aménagements, nettoyage, papiers..."></i>
+            Budget dépenses autres
+          </label>
+          <%= f.input :others_budget, input_html: { min: '0', step: '50'}, class: "form-control" %><br><br>
+        </div>
+        <div class="col-sm-3 hr-form-title">
+          <h5>Localisation</h5><hr>
+          <i class="text-muted">Où se trouve ce bien ?</i>
+        </div>
+        <div class="col-sm-9 pro-form-input">
+          <label>Rue</label>
+          <%= f.input :address_street, class: "form-control" %>
+          <div class="row">
+            <div class="col-sm-4">
+              <label>Code postal</label>
+              <%= f.input :postal_code, class: "form-control" %>
+            </div>
+            <div class="col-sm-4">
+              <label>Ville</label>
+              <%= f.input :city, class: "form-control" %>
+            </div>
+            <div class="col-sm-4">
+              <label>Pays</label>
+              <%= f.input :country, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.button :submit, 'Modifier ce bien', class: 'btn btn-success btn-lg btn-block' %>
+  </div>
+<% end %>
