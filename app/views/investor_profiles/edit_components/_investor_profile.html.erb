@@ -1,0 +1,45 @@
+<%= simple_form_for @investor_profile, method: :put, url: investor_profile_path(@investor_profile), defaults: { label: false } do |f| %>
+  <div class="pro-form-padding">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-3 hr-form-title">
+          <h5>Crédit</h5><hr>
+          <i class="text-muted">Vos habitudes et préférences en matière de crédit.</i>
+        </div>
+        <div class="col-sm-9 pro-form-input">
+          <label>Nombre d'année d'emprunt.</label>
+          <%= f.input :credit_years, input_html: { min: '0', max: '50', step: '5'} %>
+          <label>Taux auquel vous contractez les crédits.</label>
+          <%= f.input :credit_rate, input_html: { min: '0', max: '100', step: '0.5'} %>
+          <label>Prix de l'assurance crédit (€/an)</label>
+          <%= f.input :credit_insurance, input_html: { min: '0', step: '1'} %>
+          <br><br>
+        </div>
+        <div class="col-sm-3 hr-form-title">
+          <h5>Forme juridique</h5><hr>
+          <i class="text-muted">Vos habitudes en matière de légal et d'association</i>
+        </div>
+        <div class="col-sm-9 pro-form-input">
+          <label>
+            <i class="far fa-question-circle text-primary" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Combien êtes vous dans vos structures d'investissement ? Entrer le nombre de personne permet de mieux calculer les frais annuels"></i>
+            Nombre d'investisseurs
+          </label>
+          <%= f.input :number_of_investors, input_html: { min: '0', step: '1'} %>
+          <label>Forme juridique</label>
+          <%= f.input :legal_form, as: :select, collection: InvestorProfile::LEGAL_FORMS, include_blank: false %><br><br>
+        </div>
+        <div class="col-sm-3 hr-form-title">
+          <h5>Critères de sélection</h5><hr>
+          <i class="text-muted">Quelles sont vos critères de sélection d'un bien ?</i>
+        </div>
+        <div class="col-sm-9 pro-form-input">
+          <label>Rendement net limite</label>
+          <%= f.input :net_yield_limit, input_html: { min: '0', max: '100', step: '0.1'} %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, 'Modifier mon profil', class: 'btn btn-success btn-lg btn-block' %>
+  </div>
+<% end %>

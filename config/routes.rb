@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 	end
   
   resources :real_estates
+  resources :investor_profiles, only: [:edit, :update]
 
 end

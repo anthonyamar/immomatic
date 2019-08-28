@@ -1,4 +1,7 @@
 class RealEstatesController < ApplicationController
+  
+  before_action :must_be_user_real_estate, only: [:show]
+  
   def index
     @real_estates = RealEstate.visible_by(current_user)
   end
@@ -62,7 +65,7 @@ class RealEstatesController < ApplicationController
   end
 
   def must_be_user_real_estate # before action
-    real_estate = current_user.real_estate.find_by(id: params[:id])
+    real_estate = current_user.real_estates.find_by(id: params[:id])
     unless real_estate
       render_404
     end

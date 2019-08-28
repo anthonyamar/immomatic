@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_151032) do
+ActiveRecord::Schema.define(version: 2019_08_28_192916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "investor_profiles", force: :cascade do |t|
+    t.float "credit_years", default: 25.0
+    t.float "credit_rate", default: 1.6
+    t.float "credit_insurance", default: 60.0
+    t.integer "number_of_investors", default: 1
+    t.string "legal_form", default: "sci_is"
+    t.float "net_yield_limit", default: 1.0
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_investor_profiles_on_user_id"
+  end
 
   create_table "real_estates", force: :cascade do |t|
     t.string "ad_link"
@@ -54,5 +67,6 @@ ActiveRecord::Schema.define(version: 2019_08_05_151032) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "investor_profiles", "users"
   add_foreign_key "real_estates", "users"
 end

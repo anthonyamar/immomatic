@@ -1,0 +1,35 @@
+<% @title = "Éditer votre profil investisseur" %>
+<% components_path = "investor_profiles/edit_components/" %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="jumbotron center mt-5 shadow">
+        <div class="text-center mb-5">
+          <h1 class="text-primary">Votre profil investisseur</h1>
+          <p class="text-secondary">
+            Chaque investisseur a ses préférences et ses propres plans en matière de crédit.<br>
+            Obtenez des calculs beaucoup plus personnalisés et réalistes en renseignant votre profil.
+          </p>
+        </div>
+
+        <ul class="nav nav-pills nav-fill mb-5" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Profil investisseur</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Mot de passe</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <%= render components_path + "investor_profile" %>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <%= render components_path + "user_password" %>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+</div>
