@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   
   resources :real_estates
   resources :investor_profiles, only: [:edit, :update]
-
+  get 'real_estates/:id/duplicate', to: 'real_estates#duplicate', as: 'duplicate_real_estate'
+  
 end

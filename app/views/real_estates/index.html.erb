@@ -34,10 +34,10 @@
                   <i class="fas fa-eye fa-lg text-success"></i>
                 <% end %>
                 <% if real_estate.abandonable_or_editable? %>
-                  <%= link_to edit_real_estate_path(real_estate), title: "Éditer" do %>
-                    <i class="fas fa-edit fa-lg text-info"></i>
+                  <%= link_to duplicate_real_estate_path(real_estate), title: "Dupliquer" do %>
+                    <i class="far fa-copy fa-lg text-info"></i>
                   <% end %>
-                  <%= link_to real_estate_path(real_estate), title: "Supprimer", method: :destroy, data: { confirm: "Are you sure to abandonned this real estate?" } do %>
+                  <%= link_to real_estate_path(real_estate), title: "Supprimer", method: :delete, data: { confirm: "Voulez-vous vraiment supprimer ce bien ?" } do %>
                     <i class="fas fa-trash-alt fa-lg text-danger"></i>
                   <% end %>
                 <% end %>

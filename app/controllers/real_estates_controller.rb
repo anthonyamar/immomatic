@@ -1,6 +1,6 @@
 class RealEstatesController < ApplicationController
   
-  before_action :must_be_user_real_estate, only: [:show]
+  before_action :must_be_user_real_estate, only: [:show, :update, :destroy, :duplicate]
   
   def index
     @real_estates = RealEstate.visible_by(current_user)
@@ -50,12 +50,37 @@ class RealEstatesController < ApplicationController
     end
   end
   
-  def edit
+  def destroy
+    @real_estate = RealEstate.find(params[:id])
     
+    respond_to do |format|
+      if @real_estate.destroy
+        format.html { redirect_back(fallback_location: real_estates_path) }
+        flash[:success] = "Votre bien immobilier a bien été supprimé"
+      else
+        format.html { redirect_back(fallback_location: real_estates_path) }
+        @real_estate.errors.each do |attr, msg|
+          flash[:danger] = msg
+        end
+      end
+    end
   end
   
-  def destroy
+  def duplicate
+    @real_estate = RealEstate.find(params[:id])
+    duplicated_real_estate = @real_estate.dup
     
+    respond_to do |format|
+      if duplicated_real_estate.save
+        format.html { redirect_back(fallback_location: real_estates_path) }
+        flash[:success] = "Votre bien immobilier a bien été dupliqué"
+      else
+        format.html { render :new }
+        @real_estate.errors.each do |attr, msg|
+          flash[:danger] = msg
+        end
+      end
+    end
   end
   
   private
