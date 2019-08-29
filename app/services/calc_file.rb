@@ -1,7 +1,7 @@
 class CalcFile
 
   attr_accessor :buying_price, :monthly_rent_estimation, :annual_charges, :monthly_charges,
-  :works_budget, :furniture_budget, :others_budget
+  :works_budget, :furniture_budget, :others_budget, :investor_profile
 
   MONTHS = 12 # number of month in on year. 
   CREDIT_YEARS = 25 # credit duration.
@@ -17,6 +17,7 @@ class CalcFile
 
   def initialize(real_estate)
     @real_estate = real_estate
+    @investor_profile = real_estate.user.investor_profile
     @buying_price = real_estate.buying_price
     @monthly_rent_estimation = real_estate.monthly_rent_estimation
     @annual_charges = real_estate.annual_charges
@@ -153,8 +154,8 @@ class CalcFile
 
   def menscredit
     c = total_acquisition
-    ia = CREDIT_RATE
-    n = CREDIT_MONTHS_DURATION
+    ia = investor_profile.credit_rate
+    n = investor_profile.credit_years * MONTHS
     
     puts "menscredit(#{c}, #{ia}, #{n})"
     # si le capital est nul, il n'y a rien à rembourser
@@ -207,7 +208,7 @@ class CalcFile
   end
 
   def credit_insurance # C22
-    60
+    investor_profile.credit_insurance * investor_profile.number_of_investors
   end
 
   def various # C23
