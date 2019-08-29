@@ -61,7 +61,7 @@ class RealEstatesController < ApplicationController
   private
 
   def real_estate_params
-    params.require(:real_estate).permit(:ad_link, :buying_price, :monthly_rent_estimation, :annual_charges, :works_budget, :furniture_budget, :others_budget, :square_meters, :state, :address_street, :postal_code, :city, :country, :user_id)
+    params.require(:real_estate).permit(:ad_link, :buying_price, :monthly_rent_estimation, :annual_charges, :works_budget, :furniture_budget, :others_budget, :square_meters, :state, :others_annual_fees, :house_insurance, :property_tax, :address_street, :postal_code, :city, :country, :user_id)
   end
 
   def must_be_user_real_estate # before action

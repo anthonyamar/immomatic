@@ -1,14 +1,12 @@
 class CalcFile
 
-  attr_accessor :real_estate, :buying_price, :monthly_rent_estimation, :annual_charges, :monthly_charges,
-  :works_budget, :furniture_budget, :others_budget, :investor_profile
-
+  attr_accessor :real_estate, :buying_price, :monthly_rent_estimation, :annual_charges, 
+  :monthly_charges, :works_budget, :furniture_budget, :others_budget, :investor_profile
+  
   MONTHS = 12 # number of month in on year. 
-  CREDIT_YEARS = 25 # credit duration.
-  CREDIT_MONTHS_DURATION = CREDIT_YEARS * MONTHS
-  CREDIT_RATE = 1.6 # average rate in the market
+  BANK_ADMINISTRATIVE_FEES = 0.01 # this can negociated with the bank. This is average.
+  BANK_CREDIT_GUARANTY_FEES = 0.01 # this can be negociated with the bank. This is average but quite expansive. Simulate here : https://www.creditlogement.fr/simulateur
   TENANT_CHARGES_RATE = 1.66 # 2/3 for the tenant, 1/3 for the owner
-  ADMINISTRATIVE_MANAGMENT_RATE = 0.06
   PROPERTY_TAXES = 0.7 # variable. Here set to 70% of one month_rent for the year.
   NOTARY_TAXES = 0.07 # 7% buying price. Legal statement.
   DEDUCTIBLE_CREDIT_INTEREST = 0.3 # 30% of the credit interests are deductible from the company taxes. 
@@ -98,10 +96,22 @@ class CalcFile
   def others # C7
     others_budget
   end
+  
+  def bank_administrative_fees
+    buying_price * BANK_ADMINISTRATIVE_FEES
+  end
+  
+  def bank_credit_guaranty_fees
+    buying_price * BANK_CREDIT_GUARANTY_FEES
+  end
 
   def total_acquisition # C8
     puts "total_acquisition = #{buying + notary + works + furniture + others}"
     buying + notary + works + furniture + others
+  end
+  
+  def total_acquisition_borne_buyer
+    bank_administrative_fees + bank_credit_guaranty_fees
   end
 
   # RENT REVENUES
@@ -208,7 +218,7 @@ class CalcFile
   end
 
   def administrative_management # C21
-    total = (monthly_rent_estimation * ADMINISTRATIVE_MANAGMENT_RATE) * MONTHS
+    total = ((investor_profile.administrative_management_rate * monthly_rent_estimation) / 100) * MONTHS
     puts "administrative_management = #{total}"
     return total
   end

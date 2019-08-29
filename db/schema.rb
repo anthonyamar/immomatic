@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_133313) do
+ActiveRecord::Schema.define(version: 2019_08_29_145139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_08_29_133313) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "administrative_management_rate", default: 0.0, null: false
     t.index ["user_id"], name: "index_investor_profiles_on_user_id"
   end
 
@@ -47,8 +48,8 @@ ActiveRecord::Schema.define(version: 2019_08_29_133313) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "square_meters", default: 0.0
-    t.float "others_annual_fees", default: 0.0
-    t.float "house_insurance", default: 120.0
+    t.float "others_annual_fees", default: 0.0, null: false
+    t.float "house_insurance", default: 120.0, null: false
     t.float "property_tax"
     t.index ["user_id"], name: "index_real_estates_on_user_id"
   end

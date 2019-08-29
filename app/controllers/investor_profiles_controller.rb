@@ -29,7 +29,7 @@ class InvestorProfilesController < ApplicationController
   private
 
   def investor_profile_params
-    params.require(:investor_profile).permit(:credit_years, :credit_rate, :credit_insurance, :number_of_investors, :legal_form, :net_yield_limit)
+    params.require(:investor_profile).permit(:credit_years, :credit_rate, :credit_insurance, :number_of_investors, :legal_form, :net_yield_limit, :administrative_management_rate)
   end
 
   def must_be_user_investor_profile # before action

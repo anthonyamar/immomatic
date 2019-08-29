@@ -16,8 +16,8 @@
           <br><br>
         </div>
         <div class="col-sm-3 hr-form-title">
-          <h5>Forme juridique</h5><hr>
-          <i class="text-muted">Vos habitudes en matière de légal et d'association</i>
+          <h5>Forme juridique et gestion</h5><hr>
+          <i class="text-muted">Vos habitudes en matière de légal, d'association et de gestion</i>
         </div>
         <div class="col-sm-9 pro-form-input">
           <label>
@@ -26,7 +26,12 @@
           </label>
           <%= f.input :number_of_investors, input_html: { min: '0', step: '1'} %>
           <label>Forme juridique</label>
-          <%= f.input :legal_form, as: :select, collection: InvestorProfile::LEGAL_FORMS, include_blank: false %><br><br>
+          <%= f.input :legal_form, as: :select, collection: InvestorProfile::LEGAL_FORMS, include_blank: false %>
+          <label>
+            <i class="far fa-question-circle text-primary" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Les frais de gestion de administrative tournent en moyenne à 6% du loyer. Si vous gérez vous même les biens, laissez à ce champ à 0."></i>
+            Frais de gestion administrative (%)
+          </label>
+          <%= f.input :administrative_management_rate, input_html: { min: '0', step: '1'} %><br><br>
         </div>
         <div class="col-sm-3 hr-form-title">
           <h5>Critères de sélection</h5><hr>
