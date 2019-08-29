@@ -42,7 +42,7 @@ class RealEstatesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render :edit }
+        format.html { redirect_to real_estate_path(@real_estate) }
         @real_estate.errors.each do |attr, msg|
           flash[:danger] = msg
         end
