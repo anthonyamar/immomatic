@@ -1,7 +1,9 @@
 <div class="row show-tabs">
-  <div class="col-sm-6">
+  <div class="col-sm-6 mt-4">
     <h5 class="mb-4">Indicateurs importants</h5>
     <p><b>Loyer mensuel estimé : </b><%= to_currency(@real_estate.monthly_rent_estimation.round(2)) %></p>
+    <p><b>Surface : </b><%= @real_estate.format_square_meters %></p>
+    <p><b>Prix du m2 : </b><%= @real_estate.format_price_per_square_meters %></p>
     <p><b>Charges annuelles : </b><%= to_currency(@real_estate.annual_charges.round(2)) %></p>
     <p><b>Rendement brut : </b><%= to_percentage(@profitability.gross_yield.round(2)) %></p>
     <p><b>Rendement net : </b><%= to_percentage(@profitability.net_yield.round(2)) %></p>
@@ -11,7 +13,7 @@
     <p><b>Cashflow mensuel après impôts : </b><%= to_currency(@profitability.monthly_cashflow_after_taxes.round(2)) %></p>
     <p><b>Cashflow annuel après impôts : </b><%= to_currency(@profitability.annual_cashflow_after_taxes .round(2)) %></p>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 mt-4">
     <h5 class="mb-4">Frais annuels</h5>
     <p><b>Crédit annuel : </b><%= to_currency(@profitability.credit.round(2)) %></p>
     <p><b>Mensualité de crédit : </b><%= to_currency(@profitability.menscredit.round(2)) %></p>
@@ -24,7 +26,7 @@
     <p><b>Divers : </b><%= to_currency(@profitability.various.round(2)) %></p>
     <p><b>Total des frais annuels : </b><%=to_currency(@profitability.total_annual_fees.round(2)) %></p>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 mt-4">
     <h5 class="mb-4">Prix d'acquisition du bien</h5>
     <p><b>Prix d'achat : </b><%= to_currency(@real_estate.buying_price.round(2)) %></p>
     <p><b>Notaire : </b><%= to_currency(@profitability.notary.round(2)) %></p>
@@ -33,7 +35,7 @@
     <p><b>Autres : </b><%= to_currency(@profitability.others.round(2)) %></p>
     <p><b>Prix total d'acquisition : </b><%= to_currency(@profitability.total_acquisition.round(2)) %></p>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 mt-4">
     <h5 class="mb-4">Revenus locatifs</h5>
     <p><b>Loyer mensuel CC : </b><%= to_currency(@profitability.monthly_rate.round(2)) %></p>
     <p><b>Vacances locatives : </b><%= to_currency(@profitability.holiday_rent.round(2)) %></p>

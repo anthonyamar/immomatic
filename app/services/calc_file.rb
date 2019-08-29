@@ -1,6 +1,6 @@
 class CalcFile
 
-  attr_accessor :buying_price, :monthly_rent_estimation, :annual_charges, :monthly_charges,
+  attr_accessor :real_estate, :buying_price, :monthly_rent_estimation, :annual_charges, :monthly_charges,
   :works_budget, :furniture_budget, :others_budget, :investor_profile
 
   MONTHS = 12 # number of month in on year. 
@@ -187,7 +187,7 @@ class CalcFile
   end
 
   def house_insurance # C18
-    120
+    real_estate.house_insurance
   end
 
   def rent_insurance # C19
@@ -197,8 +197,14 @@ class CalcFile
   end
 
   def property_tax # C20
-    puts "property_tax : #{monthly_rent_estimation * PROPERTY_TAXES}"
-    monthly_rent_estimation * PROPERTY_TAXES
+    # If the user don't specify the property tax in the real_estate object, 
+    # the property tax is define as 70% of the monthly_rent_estimation. 
+    if real_estate.property_tax.nil?
+      puts "property_tax : #{monthly_rent_estimation * PROPERTY_TAXES}"
+      monthly_rent_estimation * PROPERTY_TAXES
+    else
+      real_estate.property_tax
+    end
   end
 
   def administrative_management # C21
@@ -212,7 +218,7 @@ class CalcFile
   end
 
   def various # C23
-    0
+    real_estate.others_annual_fees
   end
 
   def total_annual_fees # C24
