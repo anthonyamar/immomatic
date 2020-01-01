@@ -10,7 +10,8 @@ class CalcFile
   PROPERTY_TAXES = 0.7 # variable. Here set to 70% of one month_rent for the year.
   NOTARY_TAXES = 0.07 # 7% buying price. Legal statement.
   DEDUCTIBLE_CREDIT_INTEREST = 0.3 # 30% of the credit interests are deductible from the company taxes. 
-  DEDUCTIBLE_DEPRECATION_RATE = 15 # 1/15 of the buying price are deductible from the company taxes
+  # 1/15 of the buying price are deductible from the company taxes. Amortissements en français. 
+  DEDUCTIBLE_DEPRECATION_RATE = 15
 
 
   def initialize(real_estate)
@@ -53,6 +54,10 @@ class CalcFile
 
   def company_taxes # F16
     # Excel formula : =IF(C13-(C16*30%)-C18-C19-C20-C21-C22-(F3/15)>0;(C13-(C16*30%)-C18-C19-C20-C21-C22-(F3/15))/3;0)
+    
+    # A REFAIRE, notammenet sur la partie credit * DEDUCTIBLE_CREDIT_INTEREST
+    # À ajouter que : cette formule est correct sur les 15 premières années. 
+    
     statement = total_rent_revenues - (credit * DEDUCTIBLE_CREDIT_INTEREST) - house_insurance - rent_insurance - property_tax - administrative_management - credit_insurance - (buying_price / DEDUCTIBLE_DEPRECATION_RATE)
 
     if statement > 0
